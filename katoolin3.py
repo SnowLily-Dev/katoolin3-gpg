@@ -648,9 +648,10 @@ class APTManager:
         Installs the sources file and updates the APT cache.
         """
         arch = detect_arch()
-        
+
+# "Add keyring for apt-secure bs, yayyyyy /s"
         if arch:
-            arch = "[arch={}]".format(arch)
+            arch = "[arch={} signed-by=/usr/share/keyrings/kali-archive-keyring.gpg]".format(arch)
             
         try:
             with open(self.sources_file, "w") as file:
